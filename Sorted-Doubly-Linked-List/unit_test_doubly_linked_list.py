@@ -3,41 +3,6 @@ import unittest
 from my_sorted_doubly_linked_list import MySortedDoublyLinkedList
 from my_list_node import MyListNode
 
-maxPoints = 16.0  # defines the maximum achievable points for the example tested here
-points = maxPoints  # stores the actually achieved points based on failed unit tests
-summary = ""
-
-
-def deduct_pts(value):
-    global points
-    points = points - value
-    if points < 0:
-        points = 0
-
-
-def resolve_amount_of_pts_to_deduct(argument):
-    pool = {
-        "test_get_value": 1.0,
-        "test_invalid_get_value": 0.25,
-        "test_search_value": 1.0,
-        "test_invalid_search_value": 0.25,
-        "test_insert": 2.0,
-        "test_invalid_insert": 0.25,
-        "test_remove_first": 2.0,
-        "test_no_remove_first": 0.25,
-        "test_invalid_remove_first": 0.25,
-        "test_remove_all": 2.0,
-        "test_no_remove_all": 0.25,
-        "test_invalid_remove_all": 0.25,
-        "test_remove_duplicates": 2.0,
-        "test_filter_n_max": 1.5,
-        "test_invalid_filter_n_max": 0.25,
-        "test_filter_odd": 2.5,
-        "test_filter_even": 2.5,
-    }
-    # resolve the pts to deduct from pool
-    return pool.get(argument, 0)
-
 
 def create_list_from_array(arr):
     head = MyListNode(arr[0]) if arr else None
@@ -69,7 +34,6 @@ class UnitTestSortedDoublyLinkedList(unittest.TestCase):
         self.assertEqual(2, self.sorted_dll.get_value(1), "Wrong return value for index 1.")
         self.assertEqual(3, self.sorted_dll.get_value(2), "Wrong return value for index 2.")
         self.assertEqual(4, self.sorted_dll.get_value(3), "Wrong return value for index 3.")
-
 
     def test_invalid_get_value(self):
         with self.assertRaises(ValueError, msg="No ValueError for invalid input."):
@@ -250,7 +214,6 @@ class UnitTestSortedDoublyLinkedList(unittest.TestCase):
         self.assertEqual("[-1, 1, 1, 1, 3, 3, 5, 7, 9]", str(self.sorted_dll), "Filter odd operation failed.")
         self.assertEqual(9, len(self.sorted_dll), "Size incorrect after filter odd operation.")
 
-
     def test_filter_even(self):
         self.empty_dll.filter_even()
         self.assertEqual("[]", str(self.empty_dll), "Filter even operation failed.")
@@ -270,8 +233,6 @@ class UnitTestSortedDoublyLinkedList(unittest.TestCase):
         self.sorted_dll.filter_even()
         self.assertEqual("[-2, -2, -2, 0, 2, 2, 4, 6, 8, 8]", str(self.sorted_dll), "Filter even operation failed.")
         self.assertEqual(10, len(self.sorted_dll), "Size incorrect after filter even operation.")
-
-
 
 
 if __name__ == "__main__":
