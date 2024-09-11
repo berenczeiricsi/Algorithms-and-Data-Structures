@@ -23,7 +23,6 @@ class MySortedDoublyLinkedList:
             node = node.next_node
         return str(result)
 
-    # The following methods have to be implemented.
 
     def get_value(self, index: int) -> int:
         """Return the value (elem) at position 'index' without removing the node.
